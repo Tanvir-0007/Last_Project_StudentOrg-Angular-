@@ -1,0 +1,67 @@
+<div class="container mt-3">
+  <div class="form-group position-relative">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search students by name"
+      (input)="onSearch($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+    />
+    <div class="dropdown-menu show w-100" *ngIf="showSuggestions">
+      <div class="dropdown-item"
+           *ngFor="let student of students"
+           (mousedown)="selectStudent(student)">
+        {{ student.name }}
+      </div>
+      <div infinite-scroll
+           [infiniteScrollDistance]="2"
+           [infiniteScrollThrottle]="150"
+           (scrolled)="onScroll()"
+           class="dropdown-footer">
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedStudent">
+    <h3>{{ selectedStudent.name }}'s Details</h3>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Roll</th>
+        <th>Email</th>
+        <th>Date of Birth</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>{{ selectedStudent.name }}</td>
+        <td>{{ selectedStudent.roll }}</td>
+        <td>{{ selectedStudent.email }}</td>
+        <td>{{ selectedStudent.dateOfBirth }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h4>Subjects</h4>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let subject of selectedStudent.subjects">
+        <td>{{ subject.id }}</td>
+        <td>{{ subject.name }}</td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="deleteSubject(subject.id)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+/* Updated search-component.css */
+
+/* Container styles */
+.container {
+  max-width: 800px; /* Adjust maximum width as needed */
+  width: 100%; /* Take full width */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Form group styles */
+.form-group {
+  position: relative;
+}
+
+/* Search input styles */
+.form-control {
+  width: 100%; /* Take full width */
+  border-radius: 5px; /* Add some border radius */
+  border: 1px solid #ccc; /* Add a border */
+  padding: 10px; /* Add padding */
+  font-size: 16px; /* Adjust font size */
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 5px); /* Position below the input */
+  left: 0;
+  z-index: 1000; /* Ensure dropdown appears above other content */
+  background-color: #fff; /* Set background color */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 5px; /* Add some border radius */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  max-height: 200px; /* Limit max height */
+  overflow-y: auto; /* Add vertical scroll */
+}
+
+/* Dropdown item styles */
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add transition for hover effect */
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+}
+
+/* Table styles */
+.table {
+  margin-top: 20px; /* Adjust margin for top spacing */
+  width: 100%; /* Take full width */
+  border-collapse: collapse; /* Collapse borders */
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd; /* Add border to table cells */
+  padding: 8px; /* Add padding */
+}
+
+/* Button styles */
+.btn {
+  margin-right: 5px;
+  padding: 8px 16px; /* Add padding */
+  font-size: 14px; /* Adjust font size */
+  border-radius: 5px; /* Add border radius */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add transition for hover effect */
+}
+
+.btn-danger {
+  color: #fff; /* Text color */
+  background-color: #dc3545; /* Button color */
+  border: 1px solid #dc3545; /* Button border */
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Darken button color on hover */
+}

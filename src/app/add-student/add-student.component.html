@@ -1,0 +1,68 @@
+<div class="container">
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" class="form-control" formControlName="name" />
+
+      <small *ngIf="studentForm.get('name')?.invalid && studentForm?.get('name')?.touched">
+        *Must need a Name</small>
+    </div>
+
+    <div class="form-group">
+      <label for="roll">Roll</label>
+      <input id="roll" class="form-control" formControlName="roll" />
+      <small *ngIf="studentForm.get('roll')?.invalid && studentForm?.get('roll')?.touched">
+        *Must need a Roll</small>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" class="form-control" formControlName="email" />
+      <small *ngIf="studentForm.get('email')?.invalid && studentForm?.get('email')?.touched">
+        *Must need email. And must need @. </small>
+    </div>
+    <div class="form-group">
+      <label for="dateOfBirth">Date of Birth</label>
+      <input id="dateOfBirth" class="form-control" formControlName="dateOfBirth" type="date" />
+      <small *ngIf="studentForm.get('name')?.invalid && studentForm?.get('name')?.touched">
+        *Must need a valid date</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Add / Update Student</button>
+  </form>
+
+  <table class="table mt-4">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Roll</th>
+      <th>Email</th>
+      <th>Date of Birth</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{ student.name }}</td>
+      <td>{{ student.roll }}</td>
+      <td>{{ student.email }}</td>
+      <td>{{ student.dateOfBirth }}</td>
+      <td>
+        <button class="btn btn-primary m-1" (click)="setFormValues(student)">Edit</button>
+        <button class="btn btn-danger" (click)="deleteStudent(student.id)">Delete</button>
+        <button class="btn btn-success m-1" (click)="addSubject(student.id)">Add Subject</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="pagination">
+    <button class="btn btn-info m-1" *ngFor="let pageNum of totalPages" (click)="changePage(pageNum - 1)">
+      {{ pageNum }}
+    </button>
+  </div>
+
+  <div class="page-size-selector mt-3">
+    <label for="pageSize">Page Size: </label>
+    <select id="pageSize" (change)="onPageSizeChange($event)">
+      <option *ngFor="let size of [10, 20, 30]" [value]="size">{{ size }}</option>
+    </select>
+  </div>
+</div>

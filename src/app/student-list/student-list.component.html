@@ -1,0 +1,41 @@
+<div class="container">
+  <table class="table mt-4">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Roll</th>
+      <th>Email</th>
+      <th>Date of Birth</th>
+      <td>Subject</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{student.id}}</td>
+      <td>{{ student.name }}</td>
+      <td>{{ student.roll }}</td>
+      <td>{{ student.email }}</td>
+      <td>{{ student.dateOfBirth }}</td>
+      <td>
+        <li *ngFor="let subject of student.subjects">
+          {{ subject.name }}
+        </li>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button class="btn btn-secondary" *ngFor="let pageNum of totalPages" (click)="changePage(pageNum - 1)">
+      {{ pageNum }}
+    </button>
+  </div>
+
+  <div class="page-size-selector mt-3">
+    <label for="pageSize">Page Size: </label>
+    <select id="pageSize" (change)="onPageSizeChange($event)">
+      <option *ngFor="let size of [10, 20, 30]" [value]="size">{{ size }}</option>
+    </select>
+  </div>
+</div>
